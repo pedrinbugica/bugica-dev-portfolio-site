@@ -25,6 +25,11 @@ export const Hero = () => {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToContact = () => {
+    const element = document.getElementById("contact");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-10 hero-gradient">
       <div className="container mx-auto px-4">
@@ -53,12 +58,10 @@ export const Hero = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
-                asChild
+                onClick={scrollToContact}
                 className="border-primary/30 text-primary hover:bg-primary/10 text-lg px-8 py-4 h-auto font-semibold"
               >
-                <a href="mailto:pedrobugica2@gmail.com">
-                  FALE COMIGO
-                </a>
+                FALE COMIGO
               </Button>
             </div>
 
@@ -83,13 +86,13 @@ export const Hero = () => {
                   <Instagram className="h-6 w-6" />
                 </a>
               </Button>
-              <Button variant="ghost" size="icon" asChild className="hover:text-primary hover:scale-110 transition-all duration-300">
-                <a
-                  href="mailto:pedrobugica2@gmail.com"
-                  aria-label="Email"
-                >
-                  <Mail className="h-6 w-6" />
-                </a>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={scrollToContact}
+                className="hover:text-primary hover:scale-110 transition-all duration-300"
+              >
+                <Mail className="h-6 w-6" />
               </Button>
             </div>
           </div>
