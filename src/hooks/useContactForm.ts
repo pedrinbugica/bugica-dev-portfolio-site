@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase, hasSupabaseConfig } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
 interface ContactForm {
@@ -17,16 +17,30 @@ export const useContactForm = () => {
     setIsLoading(true);
     
     try {
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: formData
-      });
+      if (hasSupabaseConfig && supabase) {
+        // Try to send via Supabase function
+        const { data, error } = await supabase.functions.invoke('send-contact-email', {
+          body: formData
+        });
 
-      if (error) throw error;
+        if (error) throw error;
 
-      toast({
-        title: "Mensagem enviada!",
-        description: "Obrigado pelo contato. Retornarei em breve!",
-      });
+        toast({
+          title: "Mensagem enviada!",
+          description: "Obrigado pelo contato. Retornarei em breve!",
+        });
+      } else {
+        // Fallback: simulate sending without Supabase
+        console.log('Supabase não configurado. Simulando envio:', formData);
+        
+        // Simulate network delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        toast({
+          title: "Mensagem recebida!",
+          description: "Formulário funcionando! Configure o Supabase para envio real de emails.",
+        });
+      }
 
       return { success: true };
     } catch (error) {
