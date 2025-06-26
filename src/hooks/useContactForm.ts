@@ -18,28 +18,27 @@ export const useContactForm = () => {
     
     try {
       if (hasSupabaseConfig && supabase) {
+        console.log('Enviando email via Supabase function...');
+        
         // Try to send via Supabase function
         const { data, error } = await supabase.functions.invoke('send-contact-email', {
           body: formData
         });
 
-        if (error) throw error;
+        if (error) {
+          console.error('Erro na function:', error);
+          throw error;
+        }
+
+        console.log('Email enviado com sucesso:', data);
 
         toast({
           title: "Mensagem enviada!",
-          description: "Obrigado pelo contato. Retornarei em breve!",
+          description: "Obrigado pelo contato. Pedro retornará em breve!",
         });
       } else {
-        // Fallback: simulate sending without Supabase
-        console.log('Supabase não configurado. Simulando envio:', formData);
-        
-        // Simulate network delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        toast({
-          title: "Mensagem recebida!",
-          description: "Formulário funcionando! Configure o Supabase para envio real de emails.",
-        });
+        console.log('Supabase não configurado adequadamente');
+        throw new Error('Configuração do Supabase incompleta');
       }
 
       return { success: true };
@@ -47,7 +46,7 @@ export const useContactForm = () => {
       console.error('Error sending message:', error);
       toast({
         title: "Erro ao enviar mensagem",
-        description: "Tente novamente ou entre em contato diretamente pelo email.",
+        description: "Verifique se a chave RESEND_API_KEY está configurada no Supabase.",
         variant: "destructive",
       });
       return { success: false };
