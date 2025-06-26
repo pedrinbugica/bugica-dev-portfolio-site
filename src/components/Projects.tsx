@@ -12,7 +12,7 @@ export const Projects = () => {
       image: "/lovable-uploads/43bbfb7e-2bf2-4d76-a5f1-1815b4677553.png",
       technologies: ["React", "Tailwind CSS", "TypeScript", "Supabase"],
       demo: "https://impulso-digital-landing.lovable.app",
-      github: "https://github.com/pedrinbugica"
+      github: "https://github.com/pedrinbugica/impulso-digital-landing"
     },
     {
       title: "Essenza Clínica Estética",
@@ -20,7 +20,7 @@ export const Projects = () => {
       image: "/lovable-uploads/5ac55d0b-1d3e-47fc-af85-16b8a0ae0c4e.png",
       technologies: ["React", "Node.js", "Supabase", "Tailwind CSS"],
       demo: "https://essenza-bella-landing.lovable.app",
-      github: "https://github.com/pedrinbugica"
+      github: "https://github.com/pedrinbugica/essenza-bella-landing"
     },
     {
       title: "RJB & RJB Advogado",
@@ -28,7 +28,7 @@ export const Projects = () => {
       image: "/lovable-uploads/872a2a24-7eda-4469-a83f-1f80ddd63e11.png",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
       demo: "https://rivelino.com.br",
-      github: "https://github.com/pedrinbugica"
+      github: "https://github.com/pedrinbugica/rivelino-advogado-web"
     }
   ];
 
@@ -46,7 +46,7 @@ export const Projects = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-2xl transition-all duration-500 border-primary/20 hover:border-primary/40 bg-card/50 backdrop-blur-sm group">
+              <Card key={index} className="overflow-hidden hover:shadow-2xl transition-all duration-500 border-primary/20 hover:border-primary/40 bg-card/50 backdrop-blur-sm group flex flex-col">
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={project.image}
@@ -60,7 +60,7 @@ export const Projects = () => {
                     {project.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="pt-0">
+                <CardContent className="pt-0 flex flex-col flex-grow">
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech) => (
                       <Badge 
@@ -72,7 +72,7 @@ export const Projects = () => {
                       </Badge>
                     ))}
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 mt-auto">
                     <Button 
                       variant="outline" 
                       size="sm" 
