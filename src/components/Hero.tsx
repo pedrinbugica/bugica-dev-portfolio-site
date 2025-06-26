@@ -74,12 +74,26 @@ export const Hero = () => {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const renderNameWithHighlight = (text: string) => {
+    const parts = text.split("Pedro Henrique Bugica");
+    if (parts.length > 1) {
+      return (
+        <>
+          <span className="text-white">{parts[0]}</span>
+          <span className="text-primary">Pedro Henrique Bugica</span>
+          <span className="text-white">{parts[1]}</span>
+        </>
+      );
+    }
+    return <span className="text-white">{text}</span>;
+  };
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-10 hero-gradient">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-10 hero-gradient-animated">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-white">{nameText}</span>
+            {renderNameWithHighlight(nameText)}
             <span className="animate-pulse text-primary">|</span>
           </h1>
           
