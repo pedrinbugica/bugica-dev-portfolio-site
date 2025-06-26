@@ -36,7 +36,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-muted/50">
+    <section id="contact" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -54,7 +54,7 @@ export const Contact = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-primary" />
-                  <span>contato@bugica.dev</span>
+                  <span>pedrobugica2@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-primary" />
@@ -67,7 +67,7 @@ export const Contact = () => {
               </div>
             </div>
             
-            <Card>
+            <Card className="border-primary/20">
               <CardHeader>
                 <CardTitle>Envie uma mensagem</CardTitle>
                 <CardDescription>
@@ -84,6 +84,7 @@ export const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
+                      className="border-primary/30 focus:border-primary"
                     />
                   </div>
                   <div>
@@ -95,6 +96,7 @@ export const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
+                      className="border-primary/30 focus:border-primary"
                     />
                   </div>
                   <div>
@@ -106,9 +108,10 @@ export const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
+                      className="border-primary/30 focus:border-primary"
                     />
                   </div>
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
                     Enviar Mensagem
                   </Button>
                 </form>

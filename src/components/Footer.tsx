@@ -1,5 +1,5 @@
 
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Instagram, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Footer = () => {
@@ -9,9 +9,8 @@ export const Footer = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
             <div className="text-2xl font-bold mb-4">
-              <span className="text-primary">{"<"}</span>
-              Bugica
-              <span className="text-primary">{"/>"}</span>
+              <span className="text-primary">Pedro</span>
+              <span className="text-foreground">Bugica</span>
             </div>
             <p className="text-muted-foreground">
               Desenvolvedor Full Stack apaixonado por criar experiências digitais incríveis.
@@ -19,9 +18,9 @@ export const Footer = () => {
           </div>
           
           <div className="flex justify-center space-x-4 mb-8">
-            <Button variant="ghost" size="icon" asChild>
+            <Button variant="ghost" size="icon" asChild className="hover:text-primary">
               <a
-                href="https://github.com"
+                href="https://github.com/pedro-bugica"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -29,19 +28,19 @@ export const Footer = () => {
                 <Github className="h-5 w-5" />
               </a>
             </Button>
-            <Button variant="ghost" size="icon" asChild>
+            <Button variant="ghost" size="icon" asChild className="hover:text-primary">
               <a
-                href="https://linkedin.com"
+                href="https://instagram.com/pedro.bugica"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
+                aria-label="Instagram"
               >
-                <Linkedin className="h-5 w-5" />
+                <Instagram className="h-5 w-5" />
               </a>
             </Button>
-            <Button variant="ghost" size="icon" asChild>
+            <Button variant="ghost" size="icon" asChild className="hover:text-primary">
               <a
-                href="mailto:contato@bugica.dev"
+                href="mailto:pedrobugica2@gmail.com"
                 aria-label="Email"
               >
                 <Mail className="h-5 w-5" />
@@ -51,7 +50,7 @@ export const Footer = () => {
           
           <div className="border-t pt-8">
             <p className="text-muted-foreground text-sm">
-              © {new Date().getFullYear()} Bugica. Todos os direitos reservados.
+              © {new Date().getFullYear()} Pedro Henrique Bugica. Todos os direitos reservados.
             </p>
           </div>
         </div>

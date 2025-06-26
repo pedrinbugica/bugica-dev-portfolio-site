@@ -17,9 +17,8 @@ export const Header = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="text-2xl font-bold">
-            <span className="text-primary">{"<"}</span>
-            Bugica
-            <span className="text-primary">{"/>"}</span>
+            <span className="text-primary">Pedro</span>
+            <span className="text-foreground">Bugica</span>
           </div>
 
           {/* Desktop Menu */}
