@@ -27,7 +27,7 @@ serve(async (req) => {
 
     const emailData = {
       from: 'Contato Pedro <onboarding@resend.dev>',
-      to: ['pedrobugica2@gmail.com'],
+      to: ['kantorrike@gmail.com'], // Mudando para o email verificado no Resend
       subject: `Nova mensagem de contato - ${name}`,
       html: `
         <h2>Nova mensagem de contato</h2>
