@@ -7,63 +7,78 @@ import { ExternalLink, Github } from "lucide-react";
 export const Projects = () => {
   const projects = [
     {
-      title: "Sistema de Gestão Empresarial",
-      description: "Plataforma completa para gestão de empresas com dashboard administrativo, controle de usuários e relatórios detalhados.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-      technologies: ["React", "Node.js", "Supabase", "TypeScript"],
-      github: "https://github.com/pedro-bugica",
-      demo: "https://demo.com"
+      title: "Impulso Digital",
+      description: "Site de marketing digital com landing page focada em vendas e conversão de leads. Design moderno e estratégico para maximizar resultados.",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+      technologies: ["React", "Tailwind CSS", "TypeScript", "Supabase"],
+      demo: "https://impulso-digital-landing.lovable.app",
+      github: "#"
     },
     {
-      title: "E-commerce Moderno",
-      description: "Loja virtual responsiva com sistema de pagamentos integrado, carrinho de compras e painel administrativo.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800",
-      technologies: ["Next.js", "Supabase", "Stripe", "Tailwind CSS"],
-      github: "https://github.com/pedro-bugica",
-      demo: "https://demo.com"
+      title: "Essenza Clínica Estética",
+      description: "Site institucional para clínica de estética com sistema de agendamento integrado. Interface elegante e funcional.",
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&q=80&w=800",
+      technologies: ["React", "Node.js", "Supabase", "Tailwind CSS"],
+      demo: "https://essenza-bella-landing.lovable.app",
+      github: "#"
     },
     {
-      title: "App de Produtividade",
-      description: "Aplicativo para gerenciamento de tarefas e projetos com colaboração em tempo real e notificações inteligentes.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=800",
-      technologies: ["React", "Node.js", "Socket.io", "PostgreSQL"],
-      github: "https://github.com/pedro-bugica",
-      demo: "https://demo.com"
+      title: "RJB & RJB Advogado",
+      description: "Site institucional jurídico com visual sério e moderno. Desenvolvido para transmitir confiança e profissionalismo.",
+      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
+      demo: "https://rivelino.com.br",
+      github: "#"
     }
   ];
 
   return (
     <section id="projects" className="py-20">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Meus Projetos
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+            Meus <span className="text-primary">Projetos</span>
           </h2>
+          <p className="text-lg text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
+            Confira alguns dos projetos que desenvolvi com foco em design moderno, 
+            funcionalidade e resultados reais para meus clientes.
+          </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/40">
+              <Card key={index} className="overflow-hidden hover:shadow-2xl transition-all duration-500 border-primary/20 hover:border-primary/40 bg-card/50 backdrop-blur-sm group">
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-primary">{project.title}</CardTitle>
-                  <CardDescription>{project.description}</CardDescription>
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-primary text-xl">{project.title}</CardTitle>
+                  <CardDescription className="text-muted-foreground leading-relaxed">
+                    {project.description}
+                  </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                <CardContent className="pt-0">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech) => (
-                      <Badge key={tech} variant="outline" className="text-xs border-primary/30 text-primary">
+                      <Badge 
+                        key={tech} 
+                        variant="outline" 
+                        className="text-xs border-primary/30 text-primary bg-primary/5"
+                      >
                         {tech}
                       </Badge>
                     ))}
                   </div>
-                  <div className="flex gap-2">
-                    <Button variant="outline" size="sm" asChild className="border-primary/30 hover:bg-primary/10">
+                  <div className="flex gap-3">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      asChild 
+                      className="border-primary/30 hover:bg-primary/10 flex-1"
+                    >
                       <a
                         href={project.github}
                         target="_blank"
@@ -73,14 +88,18 @@ export const Projects = () => {
                         Código
                       </a>
                     </Button>
-                    <Button size="sm" asChild className="bg-primary hover:bg-primary/90">
+                    <Button 
+                      size="sm" 
+                      asChild 
+                      className="bg-primary hover:bg-primary/90 flex-1"
+                    >
                       <a
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <ExternalLink className="h-4 w-4 mr-2" />
-                        Demo
+                        Ver Site
                       </a>
                     </Button>
                   </div>
