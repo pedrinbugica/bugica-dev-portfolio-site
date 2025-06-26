@@ -9,12 +9,36 @@ const corsHeaders = {
 }
 
 serve(async (req) => {
+  console.log('Function called with method:', req.method)
+  
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
 
   try {
+    console.log('RESEND_API_KEY exists:', !!RESEND_API_KEY)
+    
+    if (!RESEND_API_KEY) {
+      throw new Error('RESEND_API_KEY not configured')
+    }
+
     const { name, email, message } = await req.json()
+    console.log('Request data:', { name, email, message })
+
+    const emailData = {
+      from: 'contato@pedrobugica.dev',
+      to: ['pedrobugica2@gmail.com'],
+      subject: `Nova mensagem de contato - ${name}`,
+      html: `
+        <h2>Nova mensagem de contato</h2>
+        <p><strong>Nome:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Mensagem:</strong></p>
+        <p>${message}</p>
+      `,
+    }
+
+    console.log('Sending email with data:', emailData)
 
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -22,32 +46,27 @@ serve(async (req) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
-      body: JSON.stringify({
-        from: 'contato@pedrobugica.dev',
-        to: ['pedrobugica2@gmail.com'],
-        subject: `Nova mensagem de contato - ${name}`,
-        html: `
-          <h2>Nova mensagem de contato</h2>
-          <p><strong>Nome:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Mensagem:</strong></p>
-          <p>${message}</p>
-        `,
-      }),
+      body: JSON.stringify(emailData),
     })
+
+    console.log('Resend API response status:', res.status)
+    
+    const responseData = await res.text()
+    console.log('Resend API response:', responseData)
 
     if (res.ok) {
       return new Response(
-        JSON.stringify({ success: true }),
+        JSON.stringify({ success: true, data: responseData }),
         {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
           status: 200,
         },
       )
     } else {
-      throw new Error('Failed to send email')
+      throw new Error(`Resend API error: ${res.status} - ${responseData}`)
     }
   } catch (error) {
+    console.error('Function error:', error)
     return new Response(
       JSON.stringify({ error: error.message }),
       {
