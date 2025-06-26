@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, MessageCircle, Phone } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { useContactForm } from "@/hooks/useContactForm";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,23 +14,17 @@ export const Contact = () => {
     email: "",
     message: ""
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
+  
+  const { sendMessage, isLoading } = useContactForm();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const result = await sendMessage(formData);
     
-    toast({
-      title: "Mensagem enviada com sucesso!",
-      description: "Obrigado pelo contato. Responderei em breve!",
-    });
-    
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+    if (result.success) {
+      setFormData({ name: "", email: "", message: "" });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -145,9 +139,9 @@ export const Contact = () => {
                   <Button 
                     type="submit" 
                     className="w-full bg-primary hover:bg-primary/90 text-lg py-6 font-semibold"
-                    disabled={isSubmitting}
+                    disabled={isLoading}
                   >
-                    {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
+                    {isLoading ? "Enviando..." : "Enviar Mensagem"}
                   </Button>
                 </form>
               </CardContent>
