@@ -26,7 +26,7 @@ serve(async (req) => {
     console.log('Request data:', { name, email, message })
 
     const emailData = {
-      from: 'contato@pedrobugica.dev',
+      from: 'Contato Pedro <onboarding@resend.dev>',
       to: ['pedrobugica2@gmail.com'],
       subject: `Nova mensagem de contato - ${name}`,
       html: `
@@ -35,6 +35,8 @@ serve(async (req) => {
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Mensagem:</strong></p>
         <p>${message}</p>
+        <hr>
+        <p><em>Email enviado via formulário de contato do site</em></p>
       `,
     }
 
