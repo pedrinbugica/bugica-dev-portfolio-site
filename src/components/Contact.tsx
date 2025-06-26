@@ -86,7 +86,7 @@ export const Contact = () => {
                       className="text-primary p-0 h-auto font-normal text-base"
                       asChild
                     >
-                      <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/5544988271929" target="_blank" rel="noopener noreferrer">
                         Conversar no WhatsApp
                       </a>
                     </Button>
