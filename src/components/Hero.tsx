@@ -65,7 +65,7 @@ export const Hero = () => {
             <div className="flex space-x-6">
               <Button variant="ghost" size="icon" asChild className="hover:text-primary hover:scale-110 transition-all duration-300">
                 <a
-                  href="https://github.com/pedro-bugica"
+                  href="https://github.com/pedrinbugica"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
@@ -94,15 +94,35 @@ export const Hero = () => {
             </div>
           </div>
 
-          {/* Right Side - Programming Image */}
+          {/* Right Side - Abstract Code Visual */}
           <div className="hidden lg:flex justify-center items-center">
-            <div className="w-80 h-80 rounded-lg bg-gradient-to-br from-primary/20 via-accent/10 to-primary/30 border border-primary/30 flex items-center justify-center relative overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=400&h=400"
-                alt="Programação"
-                className="w-full h-full object-cover rounded-lg opacity-80"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
+            <div className="relative w-80 h-80 rounded-lg overflow-hidden">
+              {/* Background with gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/30 border border-primary/30 rounded-lg"></div>
+              
+              {/* Animated code lines */}
+              <div className="absolute inset-0 p-8 font-mono text-sm">
+                <div className="space-y-3 opacity-60">
+                  <div className="text-primary animate-pulse">{"<"}<span className="text-accent">div</span> <span className="text-muted-foreground">className</span>=<span className="text-green-400">"hero"</span>{">"}</div>
+                  <div className="ml-4 text-blue-400 animate-pulse" style={{animationDelay: '0.5s'}}>{"function"} <span className="text-yellow-400">createSite</span>() {"{"}</div>
+                  <div className="ml-8 text-muted-foreground animate-pulse" style={{animationDelay: '1s'}}>{"return"} <span className="text-green-400">"amazing"</span>;</div>
+                  <div className="ml-4 text-blue-400 animate-pulse" style={{animationDelay: '1.5s'}}>{"}"}</div>
+                  <div className="text-primary animate-pulse" style={{animationDelay: '2s'}}>{"</"}<span className="text-accent">div</span>{">"}</div>
+                  
+                  <div className="mt-6 text-purple-400 animate-pulse" style={{animationDelay: '2.5s'}}>const <span className="text-yellow-400">tech</span> = [</div>
+                  <div className="ml-4 text-green-400 animate-pulse" style={{animationDelay: '3s'}}>"React",</div>
+                  <div className="ml-4 text-green-400 animate-pulse" style={{animationDelay: '3.5s'}}>"TypeScript",</div>
+                  <div className="ml-4 text-green-400 animate-pulse" style={{animationDelay: '4s'}}>"Tailwind"</div>
+                  <div className="text-purple-400 animate-pulse" style={{animationDelay: '4.5s'}}>];</div>
+                </div>
+              </div>
+              
+              {/* Subtle glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent rounded-lg"></div>
+              
+              {/* Floating symbols */}
+              <div className="absolute top-4 right-4 text-primary/40 text-2xl animate-pulse">{"{ }"}</div>
+              <div className="absolute bottom-4 left-4 text-accent/40 text-2xl animate-pulse" style={{animationDelay: '1s'}}>{"< />"}</div>
             </div>
           </div>
         </div>
