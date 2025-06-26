@@ -16,9 +16,10 @@ export const Header = () => {
     <header className="fixed top-0 w-full bg-background/90 backdrop-blur-md z-50 border-b border-border/50">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold">
-            <span className="text-primary">Pedro</span>
-            <span className="text-foreground">Bugica</span>
+          <div className="text-2xl font-bold font-mono">
+            <span className="text-primary">{"< "}</span>
+            <span className="text-foreground">PEDRO BUGICA</span>
+            <span className="text-primary">{" />"}</span>
           </div>
 
           {/* Desktop Menu */}
@@ -27,7 +28,7 @@ export const Header = () => {
               onClick={() => scrollToSection("home")}
               className="hover:text-primary transition-colors duration-300"
             >
-              Home
+              Início
             </button>
             <button
               onClick={() => scrollToSection("about")}
@@ -74,7 +75,7 @@ export const Header = () => {
                 onClick={() => scrollToSection("home")}
                 className="text-left hover:text-primary transition-colors duration-300"
               >
-                Home
+                Início
               </button>
               <button
                 onClick={() => scrollToSection("about")}
