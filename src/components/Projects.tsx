@@ -9,7 +9,7 @@ export const Projects = () => {
     {
       title: "Impulso Digital",
       description: "Site de marketing digital com landing page focada em vendas e conversão de leads. Design moderno e estratégico para maximizar resultados.",
-      image: "/lovable-uploads/f6003135-945c-4d94-b598-37e409e76d2f.png",
+      image: "/lovable-uploads/43bbfb7e-2bf2-4d76-a5f1-1815b4677553.png",
       technologies: ["React", "Tailwind CSS", "TypeScript", "Supabase"],
       demo: "https://impulso-digital-landing.lovable.app",
       github: "https://github.com/pedrinbugica"
@@ -17,7 +17,7 @@ export const Projects = () => {
     {
       title: "Essenza Clínica Estética",
       description: "Site institucional para clínica de estética com sistema de agendamento integrado. Interface elegante e funcional.",
-      image: "/lovable-uploads/f6003135-945c-4d94-b598-37e409e76d2f.png",
+      image: "/lovable-uploads/5ac55d0b-1d3e-47fc-af85-16b8a0ae0c4e.png",
       technologies: ["React", "Node.js", "Supabase", "Tailwind CSS"],
       demo: "https://essenza-bella-landing.lovable.app",
       github: "https://github.com/pedrinbugica"
@@ -25,7 +25,7 @@ export const Projects = () => {
     {
       title: "RJB & RJB Advogado",
       description: "Site institucional jurídico com visual sério e moderno. Desenvolvido para transmitir confiança e profissionalismo.",
-      image: "/lovable-uploads/f6003135-945c-4d94-b598-37e409e76d2f.png",
+      image: "/lovable-uploads/872a2a24-7eda-4469-a83f-1f80ddd63e11.png",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
       demo: "https://rivelino.com.br",
       github: "https://github.com/pedrinbugica"
