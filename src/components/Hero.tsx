@@ -5,7 +5,9 @@ import { Github, Instagram, Mail } from "lucide-react";
 
 export const Hero = () => {
   const [text, setText] = useState("");
+  const [nameText, setNameText] = useState("");
   const fullText = "Desenvolvedor especializado em sites institucionais modernos e funcionais";
+  const nameFullText = "Olá! Eu sou Pedro Henrique Bugica.";
   
   useEffect(() => {
     let index = 0;
@@ -18,6 +20,48 @@ export const Hero = () => {
     }, 50);
     
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    let index = 0;
+    let isTyping = true;
+    
+    const typewriterLoop = () => {
+      const timer = setInterval(() => {
+        if (isTyping) {
+          setNameText(nameFullText.slice(0, index));
+          index++;
+          if (index > nameFullText.length) {
+            isTyping = false;
+            setTimeout(() => {
+              clearInterval(timer);
+              // Wait 30 seconds before starting to erase
+              setTimeout(() => {
+                eraseText();
+              }, 30000);
+            }, 1000);
+          }
+        }
+      }, 100);
+    };
+
+    const eraseText = () => {
+      const timer = setInterval(() => {
+        setNameText(nameFullText.slice(0, index));
+        index--;
+        if (index < 0) {
+          clearInterval(timer);
+          index = 0;
+          isTyping = true;
+          // Start typing again after erasing
+          setTimeout(() => {
+            typewriterLoop();
+          }, 500);
+        }
+      }, 50);
+    };
+
+    typewriterLoop();
   }, []);
 
   const scrollToProjects = () => {
@@ -35,10 +79,8 @@ export const Hero = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-white">Olá! Eu sou </span>
-            <span className="text-primary">Pedro Henrique</span>
-            <br />
-            <span className="text-primary">Bugica.</span>
+            <span className="text-white">{nameText}</span>
+            <span className="animate-pulse text-primary">|</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-light h-16">
