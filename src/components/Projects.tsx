@@ -7,6 +7,38 @@ import { ExternalLink, Github } from "lucide-react";
 export const Projects = () => {
   const projects = [
     {
+      title: "Bot Discord Mix — IA",
+      description: "Bot de gerenciamento de partidas CS2 com fila 5v5, veto de mapas BO3 e comando /pergunta integrado com OpenAI API (gpt-4o-mini)",
+      image: "",
+      technologies: ["Node.js", "Discord.js", "OpenAI API"],
+      github: "https://github.com/pedrinbugica/bot-discord-mix-",
+      demo: null
+    },
+    {
+      title: "Análise Psicossocial NR-1 — IA",
+      description: "Workflow automatizado com n8n + OpenAI que recebe respostas de questionários NR-1 via webhook e classifica o risco psicossocial (Baixo/Médio/Alto) com justificativa em português",
+      image: "",
+      technologies: ["n8n", "OpenAI API", "Webhook", "NR-1"],
+      github: "https://github.com/pedrinbugica/n8n-psychosocial-risk-ai",
+      demo: null
+    },
+    {
+      title: "Portfólio com Chat IA",
+      description: "Site pessoal com assistente de IA integrado via Vercel Serverless Functions + OpenAI API. A chave nunca fica exposta no frontend",
+      image: "",
+      technologies: ["React", "TypeScript", "OpenAI API", "Vercel"],
+      github: "https://github.com/pedrinbugica/bugica-dev-portfolio-site",
+      demo: "https://pedrobugica.dev"
+    },
+    {
+      title: "Sistema Psicossocial NR-1 (SaaS)",
+      description: "Plataforma SaaS para gestão de avaliações psicossociais NR-1 (COPSOQ II) com controle de acesso por chaves, questionários personalizados, dashboard com métricas e exportação de relatórios em Excel",
+      image: "",
+      technologies: ["React", "TypeScript", "Supabase", "Tailwind CSS"],
+      github: null,
+      demo: "https://essencialgonr1.com.br/"
+    },
+    {
       title: "Impulso Digital",
       description: "Site de marketing digital com landing page focada em vendas e conversão de leads. Design moderno e estratégico para maximizar resultados.",
       image: "/lovable-uploads/43bbfb7e-2bf2-4d76-a5f1-1815b4677553.png",
@@ -47,13 +79,15 @@ export const Projects = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-2xl transition-all duration-500 border-primary/20 hover:border-primary/40 bg-card/50 backdrop-blur-sm group flex flex-col">
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
+                {project.image && (
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                )}
                 <CardHeader className="pb-4">
                   <CardTitle className="text-primary text-xl">{project.title}</CardTitle>
                   <CardDescription className="text-muted-foreground leading-relaxed">
@@ -63,9 +97,9 @@ export const Projects = () => {
                 <CardContent className="pt-0 flex flex-col flex-grow">
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech) => (
-                      <Badge 
-                        key={tech} 
-                        variant="outline" 
+                      <Badge
+                        key={tech}
+                        variant="outline"
                         className="text-xs border-primary/30 text-primary bg-primary/5"
                       >
                         {tech}
@@ -73,35 +107,39 @@ export const Projects = () => {
                     ))}
                   </div>
                   <div className="flex gap-3 mt-auto">
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      asChild 
-                      className="border-primary/30 hover:bg-primary/10 flex-1"
-                    >
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    {project.github && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        asChild
+                        className="border-primary/30 hover:bg-primary/10 flex-1"
                       >
-                        <Github className="h-4 w-4 mr-2" />
-                        Código
-                      </a>
-                    </Button>
-                    <Button 
-                      size="sm" 
-                      asChild 
-                      className="bg-primary hover:bg-primary/90 flex-1"
-                    >
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="h-4 w-4 mr-2" />
+                          Código
+                        </a>
+                      </Button>
+                    )}
+                    {project.demo && (
+                      <Button
+                        size="sm"
+                        asChild
+                        className="bg-primary hover:bg-primary/90 flex-1"
                       >
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        Ver Site
-                      </a>
-                    </Button>
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="h-4 w-4 mr-2" />
+                          Ver Site
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
