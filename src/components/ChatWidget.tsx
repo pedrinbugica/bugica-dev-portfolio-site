@@ -54,7 +54,7 @@ export const ChatWidget = () => {
       const data = await response.json();
       if (!response.ok) throw new Error(data.error);
 
-      setMessages([...newMessages, { role: "assistant", content: data.message }]);
+      setMessages([...newMessages, { role: "assistant", content: data.reply }]);
     } catch {
       setMessages([
         ...newMessages,

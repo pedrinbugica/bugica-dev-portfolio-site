@@ -61,8 +61,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       temperature: 0.7,
     });
 
-    const message = completion.choices[0]?.message?.content ?? 'Desculpe, não consegui gerar uma resposta.';
-    return res.status(200).json({ message });
+    const reply = completion.choices[0]?.message?.content ?? 'Desculpe, não consegui gerar uma resposta.';
+    return res.status(200).json({ reply });
   } catch (error) {
     console.error('OpenAI API error:', error);
     return res.status(500).json({ error: 'Erro ao processar sua mensagem. Tente novamente.' });
